@@ -9,7 +9,7 @@
       <div class="basis-3/4 bg-white px-5">
         <div class="flex flex-col">
           <div
-            v-if="acceptChilder"
+            v-if="infants.length || (children.length && acceptChilder)"
             @click="acceptChilder = !acceptChilder"
             class="bg-blue-100 rounded cursor-pointer p-2 text-blue-500 flex items-center gap-4"
           >
@@ -31,7 +31,7 @@
             </span>
           </div>
           <div
-            v-else
+            v-else-if="infants.length || children.length"
             @click="acceptChilder = !acceptChilder"
             class="bg-gray-100 cursor-pointer rounded p-2 text-gray-500 flex items-center gap-4"
           >
@@ -685,7 +685,7 @@
           <div class="flex items-center gap-2">
             <p class="font-bold text-[#0A77FF]">
               <!-- {{ item.price_detail.total_fare.payable }} -->
-                0
+              0
             </p>
             <p class="text-[#7D8590]">USD</p>
           </div>
@@ -1075,6 +1075,6 @@ const toogleModal = (item, icon) => {
   desOriginIcon.origin = item.outbound_group.Origin;
   desOriginIcon.destination = item.outbound_group.destination;
   desOriginIcon.icon = icon;
-  desOriginIcon.airline = item.outbound_operating_airlines[0].code
+  desOriginIcon.airline = item.outbound_operating_airlines[0].code;
 };
 </script>
